@@ -43,9 +43,11 @@ The project uses several data sources:
 To reproduce paper results run
 
 ```bash
-python opacity-measurement.py -f granular_phon_cnn_small_1layer_ker3_sanity.csv -n 40 -type phon -typ 5000 -tok 25000 -set leipzig -sz 32 -mod cnn -o True -e 25 -tar 300K -ly 1 -ker 3
-python opacity-measurement.py -f granular_orth_cnn_small_1layer_ker3_sanity.csv -n 40 -type orth -typ 5000 -tok 25000 -set leipzig -sz 32 -mod cnn -o True -e 25 -tar 300K -ly 1 -ker 3
+python opacity-measurement.py -f granular_phon_cnn_small_1layer_ker3.csv -n 40 -type phon -typ 5000 -tok 25000 -set leipzig -sz 32 -mod cnn -o True -e 25 -tar 300K -ly 1 -ker 3
+python opacity-measurement.py -f granular_orth_cnn_small_1layer_ker3.csv -n 40 -type orth -typ 5000 -tok 25000 -set leipzig -sz 32 -mod cnn -o True -e 25 -tar 300K -ly 1 -ker 3
 ```
+
+Other hyperparameters (i.e. kernel size, number of replay streams, etc.) yield similar results, though we often found them to be higher variance.
 
 ### Analyzing Results
 
