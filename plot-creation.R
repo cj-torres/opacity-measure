@@ -1,8 +1,6 @@
 rm(list = ls())
 library(tidyverse)
 
-setwd("F:\\PycharmProjects\\opacity-measure")
-
 type_token_df = read.csv("type_token_df.csv") %>% mutate(language=substring(language, 1, 3)) %>% 
   mutate(type.token.ratio=types/tokens)
 

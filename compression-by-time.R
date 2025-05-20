@@ -11,10 +11,7 @@ LABEL_TXT = 9
 LINE_SZ = .35
 SPACING = 1.125
 KEY_HT = unit(1, "mm")
-LEGEND_SPACE = unit(2, "mm") 
-
-
-setwd("C:\\Users\\torre\\PycharmProjects\\opacity-measure")
+LEGEND_SPACE = unit(2, "mm")
 
 cnn_orth_df <- read.csv('granular_orth_cnn_small_1layer_ker3.csv') %>% mutate(set.type = 'Orthography to Phonology') %>% mutate(compressibility = mutual.algorithmic.information/best.complexity) %>% mutate_at(vars(trial.number), factor) %>% mutate(transcription.type = ifelse(language=='kor', 'narrow', transcription.type))
 cnn_phon_df <- read.csv('granular_phon_cnn_small_1layer_ker3.csv') %>% mutate(set.type = 'Phonology to Orthography') %>% mutate(compressibility = mutual.algorithmic.information/best.complexity) %>% mutate_at(vars(trial.number), factor) %>% mutate(transcription.type = ifelse(language=='kor', 'narrow', transcription.type))
@@ -57,7 +54,7 @@ only_japanese <- function(dataset){
   new_dataset = new_dataset %>% mutate(script=substring(language, 5, 10)) %>%
     mutate(script = ifelse(script=='', 'all', script))
   return(new_dataset)
-  
+
 }
 
 derivative <- function(dataset){
@@ -386,7 +383,7 @@ script_summary = rbind(cnn_jpn_final %>% filter(language!='jpn'), cnn_other_fina
     ymin = mean_compressibility - ci95,
     ymax = mean_compressibility + ci95
   ) 
-  
+
 
 ordered_scripts <- script_summary %>% filter(set.type=="Orthography to Phonology") %>%
   arrange(mean_compressibility) %>%
@@ -465,4 +462,3 @@ empirical_plot = ggplot(comparison, aes(x = onset.entropy, y = mean_compressibil
 empirical_plot
 
 ggsave("borgwaldt_empirical_half.pdf", empirical_plot, width=ACL_COLUMNWIDTH, height=ACL_COLUMNWIDTH)
-
